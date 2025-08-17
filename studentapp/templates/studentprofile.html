@@ -1,0 +1,55 @@
+{% extends "studentparent.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">PROFILE</h1>   
+           <form class="row g-4" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-sm-12">
+                <div class="mx-auto" style="max-width:200px;">
+                    {% if stu.pic %}
+                    <img src="{{stu.pic.url}}" alt="" srcset="" height="200" class="w-100">
+                    {% endif %}
+                    <input type="file" name="pic" class="form-control">
+                </div>
+
+            </div>
+            <div class="col-sm-6">
+                <label for="">NAME :</label>
+                <input type="text" name="name" value="{{stu.name}}" class="form-control text-dark" readonly="true">
+            </div>
+            <div class="col-sm-6">
+                <label for="">FATHER NAME:</label>
+                <input type="text" name="fname" value="{{stu.fname}}" class="form-control text-dark" readonly="true">
+            </div>
+            <div class="col-sm-6">
+                <label for="">NUMBER :</label>
+                <input type="text" name="number" value="{{stu.mobile}}" class="form-control text-dark" readonly="true">
+            </div>
+            <div class="col-sm-6">
+                <label for="">FATHER NUMBER :</label>
+                <input type="text" name="fnumber" value="{{stu.fnumber}}" class="form-control text-dark" readonly="true">
+            </div>
+            <div class="col-sm-6">
+                <label for="">CLASS :</label>
+                <input type="text" name="sclass" value="{{stu.sclass}}" class="form-control text-dark" readonly="true">
+            </div>
+            <div class="col-sm-6">
+                <label for="">E-MAIL :</label>
+                <input type="text" name="email" value="{{stu.email}}" class="form-control text-dark" readonly="true">
+            </div>
+            <div class="col-sm-6">
+                <label for="">FEE PAID :</label>
+                <input type="text" name="sfee" value="{{stu.sfee}}" class="form-control text-dark" readonly="true">
+            </div>
+            <div class="col-sm-6">
+                <label for="">REST FEE :</label>
+                <input type="text" name="balance" value="{{stu.balance}}" class="form-control text-dark" readonly="true">
+            </div>
+            <div class="col-sm-12 text-center">
+                <button type="submit" class="btn btn-primary">UPDATE</button>
+            </div>
+           </form>
+        </div>
+    </div>
+{% endblock body %}

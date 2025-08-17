@@ -1,0 +1,39 @@
+{%extends 'adminparent.html'%}
+{% block body %}
+    <form method="post" class="row ">
+        {% csrf_token %}
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">EDIT HOME</h1>   
+            <div class="row py-3">
+                <div class="col-sm-6"><input type="text" name="name" value="{{t.name}}" placeholder="Enter Name" class="form-control"></div>
+                <div class="col-sm-6"><input type="text" name="" value="{{t.phone}}" placeholder="Enter Father's Name" class="form-control"></div>
+            </div>
+            <div class="row py-3">
+                <div class="col-sm-6"><input type="text" name="number" value="{{t.phone}}" placeholder="Enter Your Number" class="form-control"></div>
+                <div class="col-sm-6"><input type="text" name="fnumber" value="{{t.fnumber}}" placeholder="Enter Your Father's Number" class="form-control"></div>
+            </div>
+            <div class="row py-3">
+                <div class="col-sm-6"><input type="text" name="email" value="{{t.email}}" readonly placeholder="Enter Your E-Mail" class="form-control"></div>
+                <div class="col-sm-6"><input type="text" name="tclass" value="{{t.sclass}}" placeholder="Enter Your Class" class="form-control"></div>
+            </div>
+            <div class="row py-3">
+                <div class="col-sm-6"><input type="text" name="sfees" value="{{t.sfees}}" placeholder="Enter Your Fees" class="form-control"></div>
+                <div class="col-sm-6"><input type="text" name="exp" value="{{t.exp}}" placeholder="Enter Your Balance" class="form-control"></div>
+            </div>
+            <div class="row py-3">
+                <div class="col-sm-6"><input type="tsalary" name="" value="{{t.tsalary}}" placeholder="Enter Your DOB" class="form-control"></div>
+                <div class="col-sm-6">
+                    <textarea name="address" placeholder="Enter Your Address"  >{{t.address}}</textarea>
+                </div>
+            </div>
+            <div class="row my-3">
+                <div class="col-sm-12 text-center">
+                    <a href="">
+                        <button value="SUBMIT" class="btn btn-danger">SUBMIT</button>
+                    </a>
+                </div>
+            </div> 
+        </div>
+        
+    </form>
+{% endblock body %}

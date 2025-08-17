@@ -1,0 +1,61 @@
+{% extends "teacherparent.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">TEACHER PROFILE</h1>   
+           <form class="row g-4" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="col-sm-12">
+                <div class="mx-auto" style="max-width:200px;">
+                    {% if t.pic %}
+                    <img src="{{t.pic.url}}" alt="" srcset="" height="200" class="w-100">
+                    {% endif %}
+                    <input type="file" name="pic" class="form-control">
+                </div>
+
+            </div>
+            <div class="col-sm-6">
+                <label for="">NAME :</label>
+                <input type="text" name="name" value="{{t.name}}" class="form-control text-dark" readonly="true">
+            </div>
+            <div class="col-sm-6">
+                <label for="">NUMBER :</label>
+                <input type="text" name="number" value="{{t.phone}}" class="form-control text-dark" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label for="">E-MAIL :</label>
+                <input type="text" name="email" value="{{t.email}}" class="form-control text-dark" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label for="">PASSWORD :</label>
+                <input type="text" name="email" value="{{t.password}}" class="form-control text-dark" readonly>
+            </div>
+            <div class="col-sm-4">
+                <label for="">T_Class :</label>
+                <input type="text" name="tclass" value="{{t.tclass}}" class="form-control text-dark" readonly>
+            </div>
+            <div class="col-sm-4">
+                <label for="">QUALIFICATIONS :</label>
+                <input type="text" name="qua" value="{{t.qualification}}" class="form-control text-dark" readonly>
+            </div>
+            <div class="col-sm-4">
+                <label for="">EXPERIENCE :</label>
+                <input type="text" name="exp" value="{{t.experience}}" class="form-control text-dark" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label for="">SALARY :</label>
+                <input type="text" name="tsalary" value="{{t.tsalary}}" class="form-control text-dark" readonly>
+            </div>
+            <div class="col-sm-6">
+                <label for="">ADDRESS :</label>
+                <textarea name="address" id="" readonly style="width: 39vw;">{{t.address}}</textarea>
+            </div>
+            
+
+            <div class="col-sm-12 text-center">
+                <button type="submit" class="btn btn-primary">UPDATE</button>
+            </div>
+           </form>
+        </div>
+    </div>
+{% endblock body %}

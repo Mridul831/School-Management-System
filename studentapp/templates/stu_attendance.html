@@ -1,0 +1,23 @@
+{% extends "studentparent.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">Student Attendance</h1>   
+            <table class="table text-light table-bordered">
+             <tr>
+                <th>S_NO</th>
+                <th>DATE :</th>
+                <th>ATTENDANCE :</th>
+             </tr>
+            {% for a in att %}
+             <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{a.date}}</td>
+              <td>{{a.status}}</td>             
+             </tr>
+             {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="col-sm-12"></div>
+{% endblock body %}

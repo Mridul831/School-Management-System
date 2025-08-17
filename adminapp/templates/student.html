@@ -1,0 +1,110 @@
+{%extends 'adminparent.html'%}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 style="text-align:center;">Students</h1>   
+              <div class="row">
+                <div class="col-sm-12">
+                    <form method="post" class="p-3 text-light">
+                        {% csrf_token %}
+                        <h3>Add Student</h3>
+                        {% if msg %}
+                        <div class="alert alert-dark" role="alert">{{msg}}</div>
+                        {% endif %}
+                        <div class="row">
+                            <div class="col-sm-6"><input type="text" name="name" class="form-control my-2" placeholder="ENTER YOUR NAME" required="true"></div>
+                            <div class="col-sm-6"><input type="text" name="number" class="form-control my-2" placeholder="ENTER YOUR MOBILE NUMBER" required="true"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6"><input type="text" name="email" class="form-control my-2" placeholder="ENTER YOUR E-MAIL" required="true"></div>
+                            <div class="col-sm-6"><input type="text" name="password" class="form-control my-2" placeholder="ENTER YOUR PASSWORD" required="true"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6"><input type="text" name="fname" class="form-control my-2" placeholder="FATHER'S NAME" required="true"></div>
+                            <div class="col-sm-6"><input type="text" name="fnumber" class="form-control my-2" placeholder="FATHER' NUMBER" required="true"></div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <select name="sclass" class="form-select">
+                                    <option value="" selected>--SELECT CLASS--</option>
+                                    {% for c in cl %}
+                                    <option value="{{c.name}}">{{c.name}}</option>
+                                    {% endfor %}
+                                </select>
+                                <input type="text" name="sclass" class="form-control my-2" placeholder="ENTER CLASS" required="true"></div>
+                            <div class="col-sm-6">
+                            <textarea name="address" class="form-control my-2 text-light" placeholder="ENTER ADDRESS" required="true"></textarea>
+                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4"><input type="text" name="sfees" class="form-control my-2" placeholder="ENTER FEES" required="true"></div>
+                            <div class="col-sm-4">
+                                <input type="text" name="balance" class="form-control my-2" placeholder="ENTER BALANCE" required="true">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="date" name="dob" class="form-control my-2" placeholder="ENTER DOB" required="true">
+                            </div>
+                        </div> 
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <button type="submit"class="btn btn-success d-sm-inline-block mx-auto my-2 px-4">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">      
+                <h2 class="text-center">REGISTERED STUDENT</h2>
+                <div class="table-responsive">
+                <table class="table text-light">
+                    <tr>
+                        <th>S.no.</th>
+                        <td>Name</td>
+                        <td>Phone_NO.</td>
+                        <td>E-Mail</td>
+                        <td>Password</td>
+                        <td>F_Name</td>
+                        <td>F_No.</td>
+                        <td>S_Class</td>
+                        <td>S_Fees</td>
+                        <td>Balance</td>
+                        <td>S_Dob</td>
+                        <td>Address</td>
+                        <td colspan="2">Action</td>
+                    </tr>
+                    {% for i in stu %}
+
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.mobile}}</td>
+                        <td>{{i.email}}</td>
+                        <td>{{i.password}}</td>
+                        <td>{{i.fname}}</td>
+                        <td>{{i.fnumber}}</td>                      
+                        <td>{{i.sclass}}</td>
+                        <td>{{i.sfees}}</td>
+                        <td>{{i.balance}}</td>
+                        <td>{{i.dob}}</td>
+                        <td>{{i.address}}</td>
+                        <td>
+                            <a href="{%url 'adminapp:edit' id=i.id %}" class="btn btn-primary">EDIT</a>
+                        </td>
+                        <td>
+                            <a href="{%url 'adminapp:delstudent' id=i.id %}" class="btn btn-danger">DELETE</a>
+                        </td>
+                     
+                    </tr>
+
+                    {% endfor %}
+                    
+                </table>
+            </div>
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
